@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom palette matching the Natural Tones Design exactly */
+  --color-natural-bg: #F7F8F3;
+  --color-natural-text: #2D3436;
+  --color-natural-heading: #344E41;
+  --color-natural-primary: #5A7D6C;
+  --color-natural-accent: #E9EDC9;
+  --color-natural-cream: #FEFAE0;
+  --color-natural-border: #E0E2D9;
+  --color-natural-accent-border: #CCD5AE;
+  --color-natural-muted: #7F8C8D;
+
+  /* Override default slate tailwind variables to instantly apply the Natural Tones background, text, and border */
+  --color-slate-50: #F7F8F3;
+  --color-slate-100: #F2F4F1;
+  --color-slate-200: #E0E2D9;
+  --color-slate-300: #CCD5AE;
+  --color-slate-400: #A8ADA0;
+  --color-slate-500: #7F8C8D;
+  --color-slate-600: #5C6257;
+  --color-slate-700: #344E41;
+  --color-slate-800: #253D32;
+  --color-slate-900: #1C3026;
+  --color-slate-950: #14241C;
+
+  /* Override default teal tailwind variables to map to Sage Green and Yellow-Green accents */
+  --color-teal-50: #FEFAE0;
+  --color-teal-100: #FEFAE0;
+  --color-teal-200: #E9EDC9;
+  --color-teal-300: #CCD5AE;
+  --color-teal-400: #CCD5AE;
+  --color-teal-500: #5A7D6C;
+  --color-teal-600: #5A7D6C;
+  --color-teal-700: #344E41;
+  --color-teal-800: #253D32;
+  --color-teal-900: #14241C;
+}
+
+body {
+  background-color: #F7F8F3 !important;
+  color: #2D3436 !important;
+  font-family: var(--font-sans);
+}
+
+/* Elegant serif elements for custom brand titles */
+.font-serif-title {
+  font-family: var(--font-serif);
+  color: #344E41;
+}
+
+/* Print optimizations to hide UI decorations and focus purely on the document */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12px !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:border-none {
+    border: none !important;
+  }
+  .print\:bg-white {
+    background-color: white !important;
+  }
+  .print\:p-0 {
+    padding: 0 !important;
+  }
+  .print\:space-y-4 > * + * {
+    margin-top: 1rem !important;
+  }
+}

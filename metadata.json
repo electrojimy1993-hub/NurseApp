@@ -1,0 +1,6 @@
+{
+  "name": "MyNurse App",
+  "description": "Sistema de control de enfermería para visualización de expedientes médicos, hojas clínicas e historiales en tiempo real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
