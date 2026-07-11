@@ -496,8 +496,7 @@ export default function NursingSheetForm({
         </div>
 
         {/* TAB 1: IDENTIFICACIÓN Y HABITUS */}
-        {(activeTab === 'id' || window.matchMedia('print').matches) && (
-          <div className="space-y-6">
+        <div className={activeTab === 'id' ? "space-y-6" : "hidden print:block print:space-y-6"}>
             <div className="border-l-4 border-teal-500 pl-3">
               <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">1. Datos de Identificación de la Persona Usuaria</h2>
               <p className="text-xs text-slate-500">Información de hospitalización y demografía básica.</p>
@@ -741,11 +740,9 @@ export default function NursingSheetForm({
               </div>
             </div>
           </div>
-        )}
 
         {/* TAB 2: SIGNOS VITALES */}
-        {(activeTab === 'vitals' || window.matchMedia('print').matches) && (
-          <div className="space-y-6">
+        <div className={activeTab === 'vitals' ? "space-y-6" : "hidden print:block print:space-y-6"}>
             <div className="border-l-4 border-teal-500 pl-3">
               <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">18. Registro de Signos Vitales (Timeline de 24 Horas)</h2>
               <p className="text-xs text-slate-500">Historial colorimétrico por turno: Frecuencia Respiratoria (Verde), Temperatura (Roja), Frecuencia Cardíaca (Azul).</p>
@@ -926,11 +923,9 @@ export default function NursingSheetForm({
               </div>
             )}
           </div>
-        )}
 
         {/* TAB 3: VALORACIÓN, DIETA Y LÍQUIDOS */}
-        {(activeTab === 'val' || window.matchMedia('print').matches) && (
-          <div className="space-y-6">
+        <div className={activeTab === 'val' ? "space-y-6" : "hidden print:block print:space-y-6"}>
             <div className="border-l-4 border-teal-500 pl-3">
               <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">19. Valoración Clínica, Escalas y Perímetros</h2>
               <p className="text-xs text-slate-500">Resultados de valoración integral y mediciones corporales específicas.</p>
@@ -1231,11 +1226,9 @@ export default function NursingSheetForm({
               </div>
             </div>
           </div>
-        )}
 
         {/* TAB 4: MEDICACION, SOLUCIONES Y DISPOSITIVOS INVASIVOS */}
-        {(activeTab === 'meds' || window.matchMedia('print').matches) && (
-          <div className="space-y-6">
+        <div className={activeTab === 'meds' ? "space-y-6" : "hidden print:block print:space-y-6"}>
             <div className="border-l-4 border-teal-500 pl-3">
               <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">22. Soluciones Parenterales Activas</h2>
               <p className="text-xs text-slate-500">Sueros, electrolitos concentrados e infusiones continuas intravenosas.</p>
@@ -1691,11 +1684,9 @@ export default function NursingSheetForm({
               </table>
             </div>
           </div>
-        )}
 
         {/* TAB 5: PLAN DE CUIDADOS, ALTA Y OBSERVACIONES */}
-        {(activeTab === 'plan' || window.matchMedia('print').matches) && (
-          <div className="space-y-6">
+        <div className={activeTab === 'plan' ? "space-y-6" : "hidden print:block print:space-y-6"}>
             <div className="border-l-4 border-teal-500 pl-3">
               <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wide">26. Plan de Cuidados de Enfermería (Taxonomía NANDA - NIC - NOC)</h2>
               <p className="text-xs text-slate-500">Juicio de enfermería basado en modelos y teorías para la mejora de la salud del paciente.</p>
@@ -1842,7 +1833,6 @@ export default function NursingSheetForm({
               </div>
             </div>
           </div>
-        )}
 
         {/* Form Bottom Save bar - Hidden in print */}
         <div className="border-t border-slate-150 pt-6 flex items-center justify-end gap-3 print:hidden">

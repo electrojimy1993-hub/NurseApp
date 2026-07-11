@@ -17,6 +17,7 @@ export default function Login({ nurses, onLoginSuccess }: LoginProps) {
   const [emailOrEmp, setEmailOrEmp] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showCredentials, setShowCredentials] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,26 +149,33 @@ export default function Login({ nurses, onLoginSuccess }: LoginProps) {
           </div>
         </form>
 
-        {/* Demo Credentials Helper */}
-        <div className="border-t border-[#E0E2D9] pt-6">
-          <div className="text-xs text-center text-[#7F8C8D] font-medium mb-3">
-            Credenciales de acceso inicial:
-          </div>
-          <div className="space-y-2">
-            {/* Administrador */}
-            <button
-              type="button"
-              onClick={() => handleQuickLogin('jorge_as1993@hotmail.com')}
-              className="w-full text-left bg-[#FEFAE0]/40 hover:bg-[#FEFAE0]/80 border border-[#CCD5AE] p-2.5 rounded-xl transition flex justify-between items-center text-xs text-[#344E41]"
-            >
-              <div>
-                <span className="font-bold">Dev Jorge Erick Aguilar Susano</span> (Administrador - TI)
-                <div className="text-[10px] text-[#5A7D6C] mt-0.5 font-mono">Correo: jorge_as1993@hotmail.com</div>
-                <div className="text-[10px] text-[#5A7D6C] font-mono">Contraseña: password123</div>
-              </div>
-              <span className="bg-white px-2 py-1 rounded border border-[#CCD5AE] text-[10px] font-semibold text-[#5A7D6C] font-mono shrink-0">Usar</span>
-            </button>
-          </div>
+        {/* Demo Credentials Helper - Hidden by default */}
+        <div className="border-t border-[#E0E2D9] pt-4 text-center">
+          <button
+            type="button"
+            onClick={() => setShowCredentials(!showCredentials)}
+            className="text-xs text-[#7F8C8D] hover:text-[#5A7D6C] font-medium transition focus:outline-none"
+          >
+            {showCredentials ? 'Ocultar credenciales de acceso' : 'Mostrar credenciales de acceso'}
+          </button>
+          
+          {showCredentials && (
+            <div className="space-y-2 mt-3 text-left">
+              {/* Administrador */}
+              <button
+                type="button"
+                onClick={() => handleQuickLogin('jorge_as1993@hotmail.com')}
+                className="w-full text-left bg-[#FEFAE0]/40 hover:bg-[#FEFAE0]/80 border border-[#CCD5AE] p-2.5 rounded-xl transition flex justify-between items-center text-xs text-[#344E41]"
+              >
+                <div>
+                  <span className="font-bold">Dev Jorge Erick Aguilar Susano</span> (Administrador - TI)
+                  <div className="text-[10px] text-[#5A7D6C] mt-0.5 font-mono">Correo: jorge_as1993@hotmail.com</div>
+                  <div className="text-[10px] text-[#5A7D6C] font-mono">Contraseña: password123</div>
+                </div>
+                <span className="bg-white px-2 py-1 rounded border border-[#CCD5AE] text-[10px] font-semibold text-[#5A7D6C] font-mono shrink-0">Usar</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
