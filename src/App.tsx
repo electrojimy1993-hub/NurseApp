@@ -28,7 +28,9 @@ import {
   History,
   Clock,
   Sparkles,
-  ArrowLeft
+  ArrowLeft,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function App() {
@@ -81,6 +83,7 @@ export default function App() {
   // Navigation states
   // 'home' | 'patients' | 'nurses' | 'sheet-editor' | 'sheet-history'
   const [activeTab, setActiveTab] = useState<'home' | 'patients' | 'nurses' | 'sheet-editor' | 'sheet-history'>('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // RFID search / scan triggers
   const [rfidInput, setRfidInput] = useState('');
@@ -277,7 +280,7 @@ export default function App() {
             </nav>
 
             {/* Nurse Info / Logout */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <div className="hidden sm:block text-right">
                 <div className="text-xs font-extrabold text-white leading-none">{currentUser.fullName}</div>
                 <div className="text-[10px] text-[#E9EDC9] font-mono mt-1">{currentUser.employeeNumber} • {currentUser.specialty}</div>
@@ -289,10 +292,63 @@ export default function App() {
               >
                 <LogOut className="w-4 h-4" />
               </button>
+              
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden bg-[#344E41]/20 hover:bg-[#344E41]/50 text-white p-2.5 rounded-xl transition border border-white/10 flex items-center justify-center"
+                aria-label="Menú principal"
+              >
+                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
             </div>
 
           </div>
         </div>
+
+        {/* Mobile collapsible menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-[#344E41]/30 bg-[#4e6d5e] animate-in slide-in-from-top-4 duration-200">
+            <nav className="flex flex-col p-4 gap-2">
+              <div className="px-3 py-1.5 text-[10px] uppercase font-extrabold text-[#E9EDC9]/85 tracking-wider border-b border-white/10 mb-1">
+                Menú de Navegación
+              </div>
+              <button
+                onClick={() => { setActiveTab('home'); setSelectedPatientId(null); setIsMobileMenuOpen(false); }}
+                className={`px-3 py-3 rounded-xl text-xs font-semibold transition flex items-center gap-2.5 ${
+                  activeTab === 'home' ? 'bg-[#344E41]/50 text-[#FEFAE0] border border-[#CCD5AE]/30' : 'text-white/80 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <ClipboardList className="w-4.5 h-4.5" />
+                Lector RFID
+              </button>
+              <button
+                onClick={() => { setActiveTab('patients'); setIsMobileMenuOpen(false); }}
+                className={`px-3 py-3 rounded-xl text-xs font-semibold transition flex items-center gap-2.5 ${
+                  activeTab === 'patients' ? 'bg-[#344E41]/50 text-[#FEFAE0] border border-[#CCD5AE]/30' : 'text-white/80 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <Users className="w-4.5 h-4.5" />
+                Admisión de Pacientes
+              </button>
+              <button
+                onClick={() => { setActiveTab('nurses'); setIsMobileMenuOpen(false); }}
+                className={`px-3 py-3 rounded-xl text-xs font-semibold transition flex items-center gap-2.5 ${
+                  activeTab === 'nurses' ? 'bg-[#344E41]/50 text-[#FEFAE0] border border-[#CCD5AE]/30' : 'text-white/80 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <User className="w-4.5 h-4.5" />
+                Módulo Enfermeros
+              </button>
+              
+              {/* Nurse profile info inside menu for mobile */}
+              <div className="sm:hidden mt-2 pt-3 border-t border-white/10 flex flex-col gap-1 px-3 text-white">
+                <span className="text-xs font-bold">{currentUser.fullName}</span>
+                <span className="text-[10px] text-[#E9EDC9] font-mono">{currentUser.employeeNumber} • {currentUser.specialty}</span>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Main Container */}
