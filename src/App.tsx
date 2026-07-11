@@ -38,7 +38,7 @@ export default function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved) as Nurse[];
-        if (!parsed.some(n => n.email === 'jorge_as1993@hotmail.com')) {
+        if (!parsed.some(n => n.email === 'a_nurse@app.com.mx')) {
           localStorage.removeItem('isem_nurses');
           localStorage.removeItem('isem_current_user');
           return initialNurses;
@@ -66,7 +66,7 @@ export default function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved) as Nurse;
-        if (parsed.email !== 'jorge_as1993@hotmail.com') {
+        if (parsed.email !== 'a_nurse@app.com.mx') {
           localStorage.removeItem('isem_current_user');
           return null;
         }

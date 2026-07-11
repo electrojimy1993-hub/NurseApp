@@ -8,13 +8,13 @@ import { Nurse, Patient, NursingSheet } from '../types';
 export const initialNurses: Nurse[] = [
   {
     id: 'n1',
-    fullName: 'Dev Jorge Erick Aguilar Susano',
+    fullName: 'Desarrollador IT',
     employeeNumber: 'EMP-1001',
     licenseId: 'CED-9912048',
     specialty: 'TI',
-    email: 'jorge_as1993@hotmail.com',
+    email: 'a_nurse@app.com.mx',
     blocked: false,
-    password: 'password123',
+    password: '12345678',
     role: 'admin',
     createdAt: '2026-07-10T22:19:30Z'
   }
