@@ -17,6 +17,18 @@ export const initialNurses: Nurse[] = [
     password: '12345678',
     role: 'admin',
     createdAt: '2026-07-10T22:19:30Z'
+  },
+  {
+    id: 'n2',
+    fullName: 'Lic. Victor Hugo Campos Rubio',
+    employeeNumber: 'EMP-1778',
+    licenseId: 'CED-9912046',
+    specialty: 'Cuidados Intensivos',
+    email: 'victor@app.com.mx',
+    blocked: false,
+    password: '12345678',
+    role: 'enfermero',
+    createdAt: '2026-07-10T22:19:30Z'
   }
 ];
 
